@@ -5,7 +5,7 @@ const Op = db.Sequelize.Op;
 // Create and Save a new Product
 exports.create = (req, res) => {
   // Validate request
-  if (!req.body.name) {
+  if (!req.body.title) {
     res.status(400).send({
       message: "Content can not be empty!"
     });
@@ -14,12 +14,9 @@ exports.create = (req, res) => {
 
   // Create a Product
   const product = {
-    name: req.body.name,
-    price: req.body.price,
+    title: req.body.title,
     description: req.body.description,
-    water: req.body.water,
-    light: req.body.light,
-    pet: req.body.pet ? req.body.findAllPet : false
+    published: req.body.published ? req.body.published : false
   };
 
   // Save Product in the database
@@ -137,20 +134,6 @@ exports.deleteAll = (req, res) => {
 // find all published Product
 exports.findAllPublished = (req, res) => {
   Product.findAll({ where: { published: true } })
-    .then(data => {
-      res.send(data);
-    })
-    .catch(err => {
-      res.status(500).send({
-        message:
-          err.message || "Some error occurred while retrieving Products."
-      });
-    });
-};
-
-// find all published Product
-exports.findAllPet = (req, res) => {
-  Product.findAll({ where: { pet: true } })
     .then(data => {
       res.send(data);
     })

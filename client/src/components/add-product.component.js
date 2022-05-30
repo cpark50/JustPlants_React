@@ -4,60 +4,30 @@ import ProductDataService from "../services/product.service";
 export default class AddProduct extends Component {
   constructor(props) {
     super(props);
-    this.onChangeName = this.onChangeName.bind(this);
-    this.onChangePrice = this.onChangePrice.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangeWater = this.onChangeWater.bind(this);
-    this.onChangeLight = this.onChangeLight.bind(this);
-    this.onChangeFriendly = this.onChangeFriendly.bind(this);
     this.saveProduct = this.saveProduct.bind(this);
     this.newProduct = this.newProduct.bind(this);
 
     this.state = {
       id: null,
-      name: "",
-      price: 20,
+      title: "",
       description: "", 
-      water: "",
-      light: "",
-      pet: false,
+      published: false,
+
       submitted: false
     };
   }
 
-  onChangeName(e) {
+  onChangeTitle(e) {
     this.setState({
-      name: e.target.value
-    });
-  }
-
-  onChangePrice(e) {
-    this.setState({
-      price: e.target.value
+      title: e.target.value
     });
   }
 
   onChangeDescription(e) {
     this.setState({
       description: e.target.value
-    });
-  }
-
-  onChangeWater(e) {
-    this.setState({
-      water: e.target.value
-    });
-  }
-
-  onChangeLight(e) {
-    this.setState({
-      light: e.target.value
-    });
-  }
-
-  onChangeFriendly(e) {
-    this.setState({
-      pet: e.target.value
     });
   }
 
@@ -87,12 +57,9 @@ export default class AddProduct extends Component {
   newProduct() {
     this.setState({
       id: null,
-      name: "",
-      price: 20,
+      title: "",
       description: "",
-      water: "",
-      light: "",
-      pet: false,
+      published: false,
 
       submitted: false
     });
@@ -111,30 +78,15 @@ export default class AddProduct extends Component {
         ) : (
           <div>
             <div className="form-group">
-              <label htmlFor="name">Plant Name</label>
+              <label htmlFor="title">Title</label>
               <input
                 type="text"
                 className="form-control"
-                id="name"
+                id="title"
                 required
-                value={this.state.name}
-                onChange={this.onChangeName}
-                name="name"
-              />
-            </div>
-
-            
-            <div className="form-group">
-              <label htmlFor="price">Price</label>
-              <input
-                type="number"
-                className="form-control"
-                id="price"
-                step="5"
-                required
-                value={this.state.price}
-                onChange={this.onChangePrice}
-                name="price"
+                value={this.state.title}
+                onChange={this.onChangeTitle}
+                name="title"
               />
             </div>
 
@@ -148,46 +100,6 @@ export default class AddProduct extends Component {
                 value={this.state.description}
                 onChange={this.onChangeDescription}
                 name="description"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="water">Water</label>
-              <input
-                type="text"
-                className="form-control"
-                id="water"
-                required
-                value={this.state.water}
-                onChange={this.onChangeWater}
-                name="water"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="light">Light</label>
-              <input
-                type="text"
-                className="form-control"
-                id="light"
-                required
-                value={this.state.light}
-                onChange={this.onChangeLight}
-                name="light"
-              />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="pet">Pet & Children Friendly?</label>
-              <input
-                type="radio"
-                className="form-control"
-                id="pet"
-                step="5"
-                required
-                value={this.state.pet}
-                onChange={this.onChangeFriendly}
-                name="pet"
               />
             </div>
 
