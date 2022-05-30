@@ -115,7 +115,7 @@ export default class ProductsList extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Plants/Products List</h4>
+          <h4>Plants List</h4>
 
           <ul className="list-group">
             {products &&
@@ -178,7 +178,7 @@ export default class ProductsList extends Component {
                 <label>
                   <strong>Friendliness:</strong>
                 </label>{" "}
-                {currentProduct.pet ? "pet" : "Pet and Children Friendly"}
+                {currentProduct.pet ? "Pet and Children Friendly" : "NOT Pet and Children Friendly"}
               </div>
 
               <Link
