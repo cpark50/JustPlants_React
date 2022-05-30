@@ -3,11 +3,23 @@ GET http://localhost:8080/
 
 ###
 
-POST http://localhost:8080/api/tutorials
+# POST http://localhost:8080/api/tutorials
+# Content-Type: application/json
+
+# {
+#     "title":"tut2",
+#     "description": "very good tutorial",
+#     "published": true
+# }
+
+POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
-    "title":"tut2",
-    "description": "very good tutorial",
-    "published": true
+    "name":"test",
+    "price": 2000,
+    "description": "hi",
+    "water": "water test",
+    "light": "light test",
+    "pet": false
 }

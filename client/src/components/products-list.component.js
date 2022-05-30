@@ -5,38 +5,38 @@ import { Link } from "react-router-dom";
 export default class ProductsList extends Component {
   constructor(props) {
     super(props);
-    this.onChangeSearchTitle = this.onChangeSearchTitle.bind(this);
+    this.onChangeSearchName = this.onChangeSearchName.bind(this);
     this.retrieveProducts = this.retrieveProducts.bind(this);
     this.refreshList = this.refreshList.bind(this);
     this.setActiveProduct = this.setActiveProduct.bind(this);
     this.removeAllProducts = this.removeAllProducts.bind(this);
-    this.searchTitle = this.searchTitle.bind(this);
+    this.searchName = this.searchName.bind(this);
 
     this.state = {
       products: [],
       currentProduct: null,
       currentIndex: -1,
-      searchTitle: ""
+      searchName: ""
     };
   }
 
   componentDidMount() {
-    this.retrieveTutorials();
+    this.retrieveProducts();
   }
 
-  onChangeSearchTitle(e) {
-    const searchTitle = e.target.value;
+  onChangeSearchName(e) {
+    const searchName = e.target.value;
 
     this.setState({
-      searchTitle: searchTitle
+      searchName: searchName
     });
   }
 
-  retrieveTutorials() {
-    TutorialDataService.getAll()
+  retrieveProducts() {
+    ProductDataService.getAll()
       .then(response => {
         this.setState({
-          tutorials: response.data
+          products: response.data
         });
         console.log(response.data);
       })
@@ -48,7 +48,7 @@ export default class ProductsList extends Component {
   refreshList() {
     this.retrieveProducts();
     this.setState({
-      currentTutorial: null,
+      currentProduct: null,
       currentIndex: -1
     });
   }
@@ -61,7 +61,7 @@ export default class ProductsList extends Component {
   }
 
   removeAllProducts() {
-    TutorialDataService.deleteAll()
+    ProductDataService.deleteAll()
       .then(response => {
         console.log(response.data);
         this.refreshList();
@@ -71,13 +71,13 @@ export default class ProductsList extends Component {
       });
   }
 
-  searchTitle() {
+  searchName() {
     this.setState({
       currentProduct: null,
       currentIndex: -1
     });
 
-    ProductDataService.findByTitle(this.state.searchTitle)
+    ProductDataService.findByName(this.state.searchName)
       .then(response => {
         this.setState({
           products: response.data
@@ -90,7 +90,7 @@ export default class ProductsList extends Component {
   }
 
   render() {
-    const { searchTitle, products, currentTutorial, currentIndex } = this.state;
+    const { searchName, products, currentProduct, currentIndex } = this.state;
 
     return (
       <div className="list row">
@@ -99,15 +99,15 @@ export default class ProductsList extends Component {
             <input
               type="text"
               className="form-control"
-              placeholder="Search by title"
-              value={searchTitle}
-              onChange={this.onChangeSearchTitle}
+              placeholder="Search by Name"
+              value={searchName}
+              onChange={this.onChangeSearchName}
             />
             <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
-                onClick={this.searchTitle}
+                onClick={this.searchName}
               >
                 Search
               </button>
@@ -115,7 +115,7 @@ export default class ProductsList extends Component {
           </div>
         </div>
         <div className="col-md-6">
-          <h4>Plants/Products List</h4>
+          <h4>Plants List</h4>
 
           <ul className="list-group">
             {products &&
@@ -128,7 +128,7 @@ export default class ProductsList extends Component {
                   onClick={() => this.setActiveProduct(product, index)}
                   key={index}
                 >
-                  {product.title}
+                  {product.name}
                 </li>
               ))}
           </ul>
@@ -141,14 +141,20 @@ export default class ProductsList extends Component {
           </button>
         </div>
         <div className="col-md-6">
-          {currentPlant ? (
+          {currentProduct ? (
             <div>
               <h4>Products</h4>
               <div>
                 <label>
-                  <strong>Title:</strong>
+                  <strong>Name:</strong>
                 </label>{" "}
-                {currentProduct.title}
+                {currentProduct.name}
+              </div>
+              <div>
+                <label>
+                  <strong>Price:</strong>
+                </label>{" "}
+                {currentProduct.price}
               </div>
               <div>
                 <label>
@@ -158,9 +164,21 @@ export default class ProductsList extends Component {
               </div>
               <div>
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Water:</strong>
                 </label>{" "}
-                {currentProduct.published ? "Published" : "Pending"}
+                {currentProduct.water}
+              </div>
+              <div>
+                <label>
+                  <strong>Light:</strong>
+                </label>{" "}
+                {currentProduct.light}
+              </div>
+              <div>
+                <label>
+                  <strong>Friendliness:</strong>
+                </label>{" "}
+                {currentProduct.pet ? "Pet and Children Friendly" : "NOT Pet and Children Friendly"}
               </div>
 
               <Link

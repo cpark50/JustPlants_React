@@ -6,7 +6,7 @@ export default class Product extends Component {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
-    this.onChangePrice = this.onChangePrice(this);
+    this.onChangePrice = this.onChangePrice.bind(this);
     this.getProduct = this.getProduct.bind(this);
     // this.updatePublished = this.updatePublished.bind(this);
     this.updateProduct = this.updateProduct.bind(this);
@@ -16,7 +16,6 @@ export default class Product extends Component {
       currentProduct: {
         id: null,
         name: "",
-        other: "",
         price: null,
         description: "",
         water: "",
@@ -87,12 +86,11 @@ export default class Product extends Component {
   //     description: this.state.currentProduct.description,
   //     published: status
   //   };
-    updatePrice(status) {
+    updatePrice(price) {
       var data = {
         id: this.state.currentProduct.id,
         name: this.state.currentProduct.name,
-        other: this.state.currentProduct.other,
-        price: status,
+        price: price,
         description: this.state.currentProduct.description,
         water: this.state.currentProduct.water,
         light: this.state.currentProduct.light,
@@ -104,7 +102,7 @@ export default class Product extends Component {
         this.setState(prevState => ({
           currentProduct: {
             ...prevState.currentProduct,
-            published: status
+            published: price
           }
         }));
         console.log(response.data);
@@ -161,6 +159,16 @@ export default class Product extends Component {
                 />
               </div>
               <div className="form-group">
+                <label htmlFor="price">Price</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="price"
+                  value={currentProduct.price}
+                  onChange={this.onChangePrice}
+                />
+              </div>
+              <div className="form-group">
                 <label htmlFor="description">Description</label>
                 <input
                   type="text"
@@ -169,8 +177,7 @@ export default class Product extends Component {
                   value={currentProduct.description}
                   onChange={this.onChangeDescription}
                 />
-              </div>
-
+              </div>          
               <div className="form-group">
                 <label>
                   <strong>Status:</strong>
@@ -179,7 +186,7 @@ export default class Product extends Component {
               </div>
             </form>
 
-            {currentProduct.published ? (
+            {/* {currentProduct.published ? (
               <button
                 className="badge badge-primary mr-2"
                 onClick={() => this.updatePublished(false)}
@@ -193,7 +200,7 @@ export default class Product extends Component {
               >
                 Publish
               </button>
-            )}
+            )} */}
 
             <button
               className="badge badge-danger mr-2"
