@@ -93,53 +93,59 @@ export default class ProductsList extends Component {
     const { searchName, products, currentProduct, currentIndex } = this.state;
 
     return (
-      <div className="list row">
-        <div className="col-md-8">
-          <div className="input-group mb-3">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search by Name"
-              value={searchName}
-              onChange={this.onChangeSearchName}
-            />
-              <button
-                className="btn btn-outline-secondary"
-                type="button"
-                onClick={this.searchName}
-              >
-                Search
-              </button>
+      //row justify-content-md-center
+      <div className="container">
+        <div className="row">
+          <div className="col">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search by Name"
+                value={searchName}
+                onChange={this.onChangeSearchName}
+              />
+                <button
+                  className="btn btn-outline-secondary"
+                  type="button"
+                  onClick={this.searchName}
+                >
+                  Search
+                </button>
+            </div>
           </div>
         </div>
-        <div className="col-md-6">
-          <h4>Plants List</h4>
 
-          <ul className="list-group">
-            {products &&
-              products.map((product, index) => (
-                <li
-                  className={
-                    "list-group-item " +
-                    (index === currentIndex ? "active" : "")
-                  }
-                  onClick={() => this.setActiveProduct(product, index)}
-                  key={index}
-                >
-                  {product.name}
-                </li>
-              ))}
-          </ul>
+        <div className="row">
+          <div className="col">
+            <h4>Plants List</h4>
 
-          <button
-            className="m-3 btn btn-sm btn-danger"
-            onClick={this.removeAllProducts}
-          >
-            Remove All
-          </button>
+            <ul className="list-group">
+              {products &&
+                products.map((product, index) => (
+                  <li
+                    className={
+                      "list-group-item " +
+                      (index === currentIndex ? "active" : "")
+                    }
+                    onClick={() => this.setActiveProduct(product, index)}
+                    key={index}
+                  >
+                    {product.name}
+                  </li>
+                ))}
+            </ul>
+
+            <button
+              className="btn btn-outline-secondary"
+              onClick={this.removeAllProducts}
+            >
+              Remove All
+            </button>
+          
         </div>
         
-        <div className="col-md-6">
+        <div className="col-md-4">
           {currentProduct ? (
             <div>
               <h4>Products</h4>
@@ -194,7 +200,9 @@ export default class ProductsList extends Component {
             </div>
           )}
         </div>
+        </div>
       </div>
     );
   }
 }
+

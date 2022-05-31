@@ -14,7 +14,7 @@ class App extends Component {
         <div class="title">
           <h1>JustPlants Admin Page</h1>
         </div>
-        <nav className="navbar">
+        <nav className="navbar navbar-expand navbar-light bg-light">
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
               <Link to={"/products"} className="item">
@@ -34,7 +34,7 @@ class App extends Component {
           </div>
         </nav>
 
-        <div className="search">
+        <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/products"]} component={ProductsList} />
             <Route exact path="/add" component={AddProduct} />
