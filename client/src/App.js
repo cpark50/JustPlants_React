@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-//import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AddProduct from "./components/add-product.component";
@@ -12,7 +12,7 @@ class App extends Component {
     return (
       <div>
         <div class="title">
-          <h1>JustPlants</h1>
+          <h1>JustPlants Admin Page</h1>
         </div>
         <nav className="navbar">
           <div className="navbar-nav mr-auto">

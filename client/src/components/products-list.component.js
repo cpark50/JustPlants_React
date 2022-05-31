@@ -103,7 +103,6 @@ export default class ProductsList extends Component {
               value={searchName}
               onChange={this.onChangeSearchName}
             />
-            <div className="input-group-append">
               <button
                 className="btn btn-outline-secondary"
                 type="button"
@@ -111,7 +110,6 @@ export default class ProductsList extends Component {
               >
                 Search
               </button>
-            </div>
           </div>
         </div>
         <div className="col-md-6">
@@ -140,6 +138,7 @@ export default class ProductsList extends Component {
             Remove All
           </button>
         </div>
+        
         <div className="col-md-6">
           {currentProduct ? (
             <div>
