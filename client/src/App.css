@@ -1,15 +1,41 @@
-.list {
-  text-align: left;
-  max-width: 750px;
-  margin: auto;
+body {
+  margin: 0%;
+  padding: 0;
+  background-color: rgb(233, 227, 227);
+
 }
 
-.submit-form {
-  max-width: 300px;
-  margin: auto;
+.title {
+  padding: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+.navbar {
+  list-style-type: none;
+  margin:0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(233, 227, 227);
+  border: 1px solid white;
+}
+
+.nav-item {
+  float: left;
+  border-right:1px solid white;
+}
+
+.item {
+  display: block;
+  color: gray;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 300;
+  color: gray;
+  line-height: 24px;
+}
+
+.search {
+  padding-top: 3%;
 }

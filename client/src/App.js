@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Switch, Route, Link } from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 import AddProduct from "./components/add-product.component";
@@ -11,25 +11,30 @@ class App extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/products"} className="navbar-brand">
-            JustPlants
-          </Link>
+        <div class="title">
+          <h1>JustPlants</h1>
+        </div>
+        <nav className="navbar">
           <div className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to={"/products"} className="nav-link">
+              <Link to={"/products"} className="item">
+                JustPlants
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to={"/products"} className="item">
                 Products
               </Link>
             </li>
             <li className="nav-item">
-              <Link to={"/add"} className="nav-link">
+              <Link to={"/add"} className="item">
                 Add
               </Link>
             </li>
           </div>
         </nav>
 
-        <div className="container mt-3">
+        <div className="search">
           <Switch>
             <Route exact path={["/", "/products"]} component={ProductsList} />
             <Route exact path="/add" component={AddProduct} />
