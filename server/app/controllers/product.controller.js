@@ -14,12 +14,17 @@ exports.create = (req, res) => {
 
   // Create a Product
   const product = {
-    name: req.body.name,
-    price: req.body.price,
-    description: req.body.description,
-    water: req.body.water,
-    light: req.body.light,
-    pet: req.body.pet ? req.body.findAllPet : false
+    id: req.body.id,
+    p_name: req.body.name,
+    p_othername: req.body.othername,
+    p_price: req.body.price,
+    p_size: req.body.size,
+    p_desc: req.body.desc,
+    p_desc2: req.body.desc2,
+    p_water: req.body.water,
+    p_light: req.body.light,
+    p_pet: req.body.pet ? req.body.findAllPet : false,
+    imagename: req.body.imagename
   };
 
   // Save Product in the database
@@ -37,8 +42,8 @@ exports.create = (req, res) => {
 
 // Retrieve all Products from the database.
 exports.findAll = (req, res) => {
-  const title = req.query.title;
-  var condition = title ? { title: { [Op.like]: `%${title}%` } } : null;
+  const p_name = req.query.name;
+  var condition = p_name ? { p_name: { [Op.like]: `%${p_name}%` } } : null;
 
   Product.findAll({ where: condition })
     .then(data => {
@@ -150,7 +155,7 @@ exports.findAllPublished = (req, res) => {
 
 // find all published Product
 exports.findAllPet = (req, res) => {
-  Product.findAll({ where: { pet: true } })
+  Product.findAll({ where: { p_pet: true } })
     .then(data => {
       res.send(data);
     })

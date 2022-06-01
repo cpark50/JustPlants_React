@@ -16,10 +16,16 @@ POST http://localhost:8080/api/products
 Content-Type: application/json
 
 {
-    "name":"test",
-    "price": 2000,
+    "id": 1000,
+    "p_name":"test",
+    "p_othername":"test other",
+    "p_price": 2000,
+    "p_size":"size test",
+    "p_desc": "desc test",
+    "p_desc2": "desc test2",
     "description": "hi",
     "water": "water test",
     "light": "light test",
-    "pet": false
+    "pet": false,
+    "imagename": "ABC"
 }
