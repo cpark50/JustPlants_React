@@ -1,15 +1,54 @@
-.list {
+body {
+  margin: 0%;
+  padding: 0;
+  background-color: rgb(233, 227, 227);
+}
+
+.title {
+  padding: 15px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.navbar {
+  list-style-type: none;
+  margin:0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(233, 227, 227);
+  border: 1px solid white;
+}
+
+.nav-item {
+  float: left;
+  border-right:1px solid white;
+}
+
+.item {
+  display: block;
+  color: gray;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  font-weight: 300;
+  color: gray;
+  line-height: 24px;
+}
+
+.search {
+  padding-top: 3%;
+}
+
+h4 {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.col {
+  padding-top: 10px;
+}
+
+.col-md-4 {
   text-align: left;
-  max-width: 750px;
-  margin: auto;
-}
-
-.submit-form {
-  max-width: 300px;
-  margin: auto;
-}
-
-.edit-form {
-  max-width: 300px;
-  margin: auto;
+  padding-top: 10px;
 }
