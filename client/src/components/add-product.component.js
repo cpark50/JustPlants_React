@@ -14,6 +14,7 @@ export default class AddProduct extends Component {
     this.onChangeWater = this.onChangeWater.bind(this);
     this.onChangeLight = this.onChangeLight.bind(this);
     this.uploadPicture = this.uploadPicture.bind(this);
+    this.onChangeImagename = this.onChangeImagename.bind(this);
     this.onChangeFriendly = this.onChangeFriendly.bind(this);
     this.saveProduct = this.saveProduct.bind(this);
     this.newProduct = this.newProduct.bind(this);
@@ -22,7 +23,8 @@ export default class AddProduct extends Component {
       id: null,
       p_name: "",
       p_othername: "", 
-      p_price: 20,
+      p_price: null,
+      p_size: "",
       p_desc: "",
       p_desc2: "",  
       p_water: "",
@@ -90,6 +92,12 @@ export default class AddProduct extends Component {
   onChangeFriendly(e) {
     this.setState({
       p_pet: e.target.value
+    });
+  }
+
+  onChangeImagename(e) {
+    this.setState({
+      imagename: e.target.value
     });
   }
 
@@ -244,7 +252,7 @@ export default class AddProduct extends Component {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="p_desc2">Description (rest of  255 characters)</label>
+              <label htmlFor="p_desc2">Description (rest of 255 characters)</label>
               <input
                 type="text"
                 className="form-control"
@@ -302,6 +310,17 @@ export default class AddProduct extends Component {
                 className="form-control"
                 onChange={this.uploadPicture}
                 name="image"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="imagename">Image name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="imagename"
+                value={this.state.imagename}
+                onChange={this.onChangeImagename}
+                name="imagename"
               />
             </div>
             <button onClick={this.saveProduct} className="btn btn-success">
