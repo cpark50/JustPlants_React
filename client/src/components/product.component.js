@@ -16,14 +16,14 @@ export default class Product extends Component {
     this.state = {
       currentProduct: {
         id: null,
-        name: "",
-        price: null,
-        size: "",
-        desc: "",
-        desc2: "",
-        water: "",
-        light: "",
-        pet: false,
+        p_name: "",
+        p_price: null,
+        p_size: "",
+        p_desc: "",
+        p_desc2: "",
+        p_water: "",
+        p_light: "",
+        p_pet: false,
         imagename:""
         // published: false
       },
@@ -104,13 +104,14 @@ export default class Product extends Component {
     updatePrice(price) {
       var data = {
         id: this.state.currentProduct.id,
-        name: this.state.currentProduct.name,
-        price: price,
-        desc: this.state.currentProduct.description,
-        desc2: this.state.currentProduct.description2,
-        water: this.state.currentProduct.water,
-        light: this.state.currentProduct.light,
-        pet: this.state.currentProduct.pet
+        p_name: this.state.currentProduct.p_name,
+        p_price: price,
+        p_desc: this.state.currentProduct.p_desc,
+        p_desc2: this.state.currentProduct.p_desc2,
+        p_water: this.state.currentProduct.p_water,
+        p_light: this.state.currentProduct.p_light,
+        p_pet: this.state.currentProduct.p_pet,
+        imagename: this.state.currentProduct.imagename
       };
 
     ProductDataService.update(this.state.currentProduct.id, data)
@@ -170,17 +171,18 @@ export default class Product extends Component {
                   type="text"
                   className="form-control"
                   id="title"
-                  value={currentProduct.name}
+                  value={currentProduct.p_name}
                   onChange={this.onChangeName}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="price">Price</label>
                 <input
-                  type="text"
+                  type="number"
+                  step="5"
                   className="form-control"
                   id="price"
-                  value={currentProduct.price}
+                  value={currentProduct.p_price}
                   onChange={this.onChangePrice}
                 />
               </div>
@@ -190,15 +192,15 @@ export default class Product extends Component {
                   type="text"
                   className="form-control"
                   id="description"
-                  value={currentProduct.description}
+                  value={currentProduct.p_desc}
                   onChange={this.onChangeDescription}
                 />
               </div>          
               <div className="form-group">
                 <label>
-                  <strong>Status:</strong>
+                  <strong>Pet & Child Friendliness: </strong>
                 </label>
-                {currentProduct.published ? "Published" : "Pending"}
+                {currentProduct.p_pet ? " Friendly" : " Not Friendly"}
               </div>
             </form>
 
