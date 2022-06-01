@@ -93,7 +93,6 @@ export default class ProductsList extends Component {
     const { searchName, products, currentProduct, currentIndex } = this.state;
 
     return (
-      //row justify-content-md-center
       <div className="container">
         <div className="row">
           <div className="col">
@@ -134,22 +133,6 @@ export default class ProductsList extends Component {
                 </li>
               ))}
           </ul>
-
-            <ul className="list-group">
-              {products &&
-                products.map((product, index) => (
-                  <li
-                    className={
-                      "list-group-item " +
-                      (index === currentIndex ? "active" : "")
-                    }
-                    onClick={() => this.setActiveProduct(product, index)}
-                    key={index}
-                  >
-                    {product.name}
-                  </li>
-                ))}
-            </ul>
 
             <button
               className="btn btn-outline-secondary"

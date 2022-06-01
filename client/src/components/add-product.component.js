@@ -111,15 +111,15 @@ export default class AddProduct extends Component {
   saveProduct() {
     var data = {
       id: this.state.id,
-      p_name: this.state.p_name,
-      p_othername: this.state.p_othername,
-      p_price: this.state.p_price,
-      p_size: this.state.p_size,
-      p_desc: this.state.p_desc,
-      p_desc2: this.state.p_desc2,
-      p_water: this.state.p_water,
-      p_light: this.state.p_light,
-      p_pet: this.state.p_pet,
+      name: this.state.p_name,
+      othername: this.state.p_othername,
+      price: this.state.p_price,
+      size: this.state.p_size,
+      desc: this.state.p_desc,
+      desc2: this.state.p_desc2,
+      water: this.state.p_water,
+      light: this.state.p_light,
+      pet: this.state.p_pet,
       imagename: this.state.imagename
     };
 
