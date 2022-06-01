@@ -1,22 +1,34 @@
 module.exports = (sequelize, Sequelize) => {
   const Product = sequelize.define("product", {
-    name: {
+    p_name: {
       type: Sequelize.STRING
     },
-    price: {
+    p_othername: {
+      type: Sequelize.STRING
+    },
+    p_price: {
       type: Sequelize.INTEGER
     },
-    description: {
+    p_size: {
       type: Sequelize.STRING
     },
-    water: {
+    p_desc: {
       type: Sequelize.STRING
     },
-    light: {
+    p_desc2: {
       type: Sequelize.STRING
     },
-    pet: {
+    p_water: {
+      type: Sequelize.STRING
+    },
+    p_light: {
+      type: Sequelize.STRING
+    },
+    p_pet: {
       type: Sequelize.BOOLEAN
+    },
+    imagename: {
+      type: Sequelize.STRING
     }
   });
 

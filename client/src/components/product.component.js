@@ -6,6 +6,7 @@ export default class Product extends Component {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeDescription2 = this.onChangeDescription2.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
     this.getProduct = this.getProduct.bind(this);
     // this.updatePublished = this.updatePublished.bind(this);
@@ -17,10 +18,13 @@ export default class Product extends Component {
         id: null,
         name: "",
         price: null,
-        description: "",
+        size: "",
+        desc: "",
+        desc2: "",
         water: "",
         light: "",
-        pet: false
+        pet: false,
+        imagename:""
         // published: false
       },
       message: ""
@@ -38,7 +42,7 @@ export default class Product extends Component {
       return {
         currentProduct: {
           ...prevState.currentProduct,
-          name: name
+          p_name: name
         }
       };
     });
@@ -50,7 +54,18 @@ export default class Product extends Component {
     this.setState(prevState => ({
       currentProduct: {
         ...prevState.currentProduct,
-        description: description
+        p_desc: description
+      }
+    }));
+  }
+
+  onChangeDescription2(e) {
+    const description2 = e.target.value;
+    
+    this.setState(prevState => ({
+      currentProduct: {
+        ...prevState.currentProduct,
+        p_desc2: description2
       }
     }));
   }
@@ -61,7 +76,7 @@ export default class Product extends Component {
     this.setState(prevState => ({
       currentProduct: {
         ...prevState.currentProduct,
-        price: price
+        p_price: price
       }
     }));
   }
@@ -91,7 +106,8 @@ export default class Product extends Component {
         id: this.state.currentProduct.id,
         name: this.state.currentProduct.name,
         price: price,
-        description: this.state.currentProduct.description,
+        desc: this.state.currentProduct.description,
+        desc2: this.state.currentProduct.description2,
         water: this.state.currentProduct.water,
         light: this.state.currentProduct.light,
         pet: this.state.currentProduct.pet

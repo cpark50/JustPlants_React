@@ -11,25 +11,37 @@ export default class AddTutorial extends Component {
 
     this.state = {
       id: null,
-      title: "",
-      description: "", 
-      published: false,
-
+      name: "",
+      price: null,
+      size: "",
+      desc: "",
+      desc2: "",
+      water: "",
+      light: "",
+      pet: false,
+      imagename:"",
       submitted: false
     };
   }
 
-  onChangeTitle(e) {
+  onChangeName(e) {
     this.setState({
-      title: e.target.value
+      p_name: e.target.value
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      description: e.target.value
+      p_desc: e.target.value
     });
   }
+
+  onChangeDescription2(e) {
+    this.setState({
+      p_desc2: e.target.value
+    });
+  }
+
 
   saveTutorial() {
     var data = {

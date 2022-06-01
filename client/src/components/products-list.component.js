@@ -119,6 +119,21 @@ export default class ProductsList extends Component {
         <div className="row">
           <div className="col">
             <h4>Plants List</h4>
+          <ul className="list-group">
+            {products &&
+              products.map((product, index) => (
+                <li
+                  className={
+                    "list-group-item " +
+                    (index === currentIndex ? "active" : "")
+                  }
+                  onClick={() => this.setActiveProduct(product, index)}
+                  key={index}
+                >
+                  {product.p_name}
+                </li>
+              ))}
+          </ul>
 
             <ul className="list-group">
               {products &&
@@ -151,39 +166,64 @@ export default class ProductsList extends Component {
               <h4>Products</h4>
               <div>
                 <label>
+                  <strong>Id:</strong>
+                </label>{" "}
+                {currentProduct.id}
+              </div>
+              <div>
+                <label>
                   <strong>Name:</strong>
                 </label>{" "}
-                {currentProduct.name}
+                {currentProduct.p_name}
               </div>
               <div>
                 <label>
                   <strong>Price:</strong>
                 </label>{" "}
-                {currentProduct.price}
+                {currentProduct.p_price}
+              </div>
+
+              <div>
+                <label>
+                  <strong>Size:</strong>
+                </label>{" "}
+                {currentProduct.p_size}
               </div>
               <div>
                 <label>
                   <strong>Description:</strong>
                 </label>{" "}
-                {currentProduct.description}
+                {currentProduct.p_desc}
+              </div>
+              <div>
+                <label>
+                  <strong>Description2:</strong>
+                </label>{" "}
+                {currentProduct.p_desc2}
               </div>
               <div>
                 <label>
                   <strong>Water:</strong>
                 </label>{" "}
-                {currentProduct.water}
+                {currentProduct.p_water}
               </div>
               <div>
                 <label>
                   <strong>Light:</strong>
                 </label>{" "}
-                {currentProduct.light}
+                {currentProduct.p_light}
               </div>
               <div>
                 <label>
                   <strong>Friendliness:</strong>
                 </label>{" "}
-                {currentProduct.pet ? "Pet and Children Friendly" : "NOT Pet and Children Friendly"}
+                {currentProduct.p_pet ? "Pet and Children Friendly" : "NOT Pet and Children Friendly"}
+              </div>
+              <div>
+                <label>
+                  <strong>Image Name:</strong>
+                </label>{" "}
+                {currentProduct.imagename}
               </div>
 
               <Link

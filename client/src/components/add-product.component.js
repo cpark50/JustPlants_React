@@ -6,23 +6,31 @@ export default class AddProduct extends Component {
     super(props);
     this.onChangeId = this.onChangeId.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeOthername = this.onChangeOthername.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
+    this.onChangeSize = this.onChangeSize.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeDescription2 = this.onChangeDescription2.bind(this);
     this.onChangeWater = this.onChangeWater.bind(this);
     this.onChangeLight = this.onChangeLight.bind(this);
     this.uploadPicture = this.uploadPicture.bind(this);
+    this.onChangeImagename = this.onChangeImagename.bind(this);
     this.onChangeFriendly = this.onChangeFriendly.bind(this);
     this.saveProduct = this.saveProduct.bind(this);
     this.newProduct = this.newProduct.bind(this);
 
     this.state = {
       id: null,
-      name: "",
-      price: 20,
-      description: "", 
-      water: "",
-      light: "",
-      pet: false,
+      p_name: "",
+      p_othername: "", 
+      p_price: null,
+      p_size: "",
+      p_desc: "",
+      p_desc2: "",  
+      p_water: "",
+      p_light: "",
+      p_pet: false,
+      imagename: "", 
       submitted: false
     };
   }
@@ -35,37 +43,61 @@ export default class AddProduct extends Component {
 
   onChangeName(e) {
     this.setState({
-      name: e.target.value
+      p_name: e.target.value
+    });
+  }
+
+  onChangeOthername(e) {
+    this.setState({
+      p_othername: e.target.value
     });
   }
 
   onChangePrice(e) {
     this.setState({
-      price: e.target.value
+      p_price: e.target.value
+    });
+  }
+
+  onChangeSize(e) {
+    this.setState({
+      p_size: e.target.value
     });
   }
 
   onChangeDescription(e) {
     this.setState({
-      description: e.target.value
+      p_desc: e.target.value
+    });
+  }
+
+  onChangeDescription2(e) {
+    this.setState({
+      p_desc2: e.target.value
     });
   }
 
   onChangeWater(e) {
     this.setState({
-      water: e.target.value
+      p_water: e.target.value
     });
   }
 
   onChangeLight(e) {
     this.setState({
-      light: e.target.value
+      p_light: e.target.value
     });
   }
 
   onChangeFriendly(e) {
     this.setState({
-      pet: e.target.value
+      p_pet: e.target.value
+    });
+  }
+
+  onChangeImagename(e) {
+    this.setState({
+      imagename: e.target.value
     });
   }
 
@@ -79,25 +111,33 @@ export default class AddProduct extends Component {
   saveProduct() {
     var data = {
       id: this.state.id,
-      name: this.state.name,
-      price: this.state.price,
-      description: this.state.description,
-      water: this.state.water,
-      light: this.state.light,
-      pet: this.state.pet
+      p_name: this.state.p_name,
+      p_othername: this.state.p_othername,
+      p_price: this.state.p_price,
+      p_size: this.state.p_size,
+      p_desc: this.state.p_desc,
+      p_desc2: this.state.p_desc2,
+      p_water: this.state.p_water,
+      p_light: this.state.p_light,
+      p_pet: this.state.p_pet,
+      imagename: this.state.imagename
     };
 
     ProductDataService.create(data)
       .then(response => {
         this.setState({
           id: response.data.id,
-          name: response.data.name,
-          price: response.data.price,
-          description: response.data.description,
-          water: response.data.water,
-          light: response.data.light,
-          pet: response.data.pet,
-
+          p_name: response.data.p_name,
+          p_othername: response.data.p_othername,
+          p_price: response.data.p_price,
+          p_size: response.data.p_size,
+          p_desc: response.data.p_desc,
+          p_desc2: response.data.p_desc2,
+          p_water: response.data.p_water,
+          p_light: response.data.p_light,
+          p_pet: response.data.p_pet,
+          imagename: response.data.imagename,
+          
           submitted: true
         });
         console.log(response.data);
@@ -110,13 +150,16 @@ export default class AddProduct extends Component {
   newProduct() {
     this.setState({
       id: null,
-      name: "",
-      price: 20,
-      description: "",
-      water: "",
-      light: "",
-      pet: false,
-
+      p_name: "",
+      p_othername: "",
+      p_price: 20,
+      p_size: "width * height * diameter",
+      p_desc: "first 255 chars of description",
+      p_desc2: "rest of the description (under 255 chars)",
+      p_water: "",
+      p_light: "",
+      p_pet: false,
+      imagename: "file name",
       submitted: false
     });
   }
@@ -150,81 +193,116 @@ export default class AddProduct extends Component {
               <input
                 type="text"
                 className="form-control"
-                id="name"
+                id="p_name"
                 required
-                value={this.state.name}
+                value={this.state.p_name}
                 onChange={this.onChangeName}
-                name="name"
+                name="p_name"
               />
             </div>
-
-            
             <div className="form-group">
-              <label htmlFor="price">Price</label>
+              <label htmlFor="p_othername">Plant's Biological Name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="p_othername"
+                required
+                value={this.state.p_othername}
+                onChange={this.onChangeOthername}
+                name="p_othername"
+              />
+            </div>
+      
+            <div className="form-group">
+              <label htmlFor="p_price">Price (multiple of 5)</label>
               <input
                 type="number"
                 className="form-control"
-                id="price"
+                id="p_price"
                 step="5"
                 required
-                value={this.state.price}
+                value={this.state.p_price}
                 onChange={this.onChangePrice}
-                name="price"
+                name="p_price"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="p_size">Size (width * height * diameter in cm)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="p_size"
+                required
+                value={this.state.p_size}
+                onChange={this.onChangeSize}
+                name="p_size"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="p_desc">Description (first 255 characters)</label>
               <input
                 type="text"
                 className="form-control"
-                id="description"
+                id="p_desc"
                 required
-                value={this.state.description}
+                value={this.state.p_desc}
                 onChange={this.onChangeDescription}
-                name="description"
+                name="p_desc"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="p_desc2">Description (rest of 255 characters)</label>
+              <input
+                type="text"
+                className="form-control"
+                id="p_desc2"
+                required
+                value={this.state.p_desc2}
+                onChange={this.onChangeDescription2}
+                name="p_desc2"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="water">Water</label>
+              <label htmlFor="p_water">Water</label>
               <input
                 type="text"
                 className="form-control"
-                id="water"
+                id="p_water"
                 required
-                value={this.state.water}
+                value={this.state.p_water}
                 onChange={this.onChangeWater}
-                name="water"
+                name="p_water"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="light">Light</label>
+              <label htmlFor="p_light">Light</label>
               <input
                 type="text"
                 className="form-control"
-                id="light"
+                id="p_light"
                 required
-                value={this.state.light}
+                value={this.state.p_light}
                 onChange={this.onChangeLight}
-                name="light"
+                name="p_light"
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="pet">Pet & Children Friendly?</label>
+              <label htmlFor="p_pet">Pet & Children Friendly?</label>
               <input
                 type="radio"
                 className="form-control"
-                id="pet"
-                step="5"
+                id="p_pet"
                 required
-                value={this.state.pet}
+                value={this.state.p_pet}
                 onChange={this.onChangeFriendly}
-                name="pet"
+                name="p_pet"
               />
             </div>
+            {/* Find way to upload image & save the imagename into the db */}
             <div className="form-group">
               <label htmlFor="image">Product Image</label>
               <input
@@ -232,6 +310,17 @@ export default class AddProduct extends Component {
                 className="form-control"
                 onChange={this.uploadPicture}
                 name="image"
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="imagename">Image name</label>
+              <input
+                type="text"
+                className="form-control"
+                id="imagename"
+                value={this.state.imagename}
+                onChange={this.onChangeImagename}
+                name="imagename"
               />
             </div>
             <button onClick={this.saveProduct} className="btn btn-success">
