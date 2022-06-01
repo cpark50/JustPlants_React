@@ -327,7 +327,7 @@ export default class Product extends Component {
                   onChange={this.onChangeLight}
                 />
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="p_pet">Pet & Children Friendly?</label>
                 <input
                   type="radio"
@@ -338,6 +338,13 @@ export default class Product extends Component {
                   onChange={this.onChangeFriendly}
                   name="p_pet"
                 />
+              </div> */}
+              <div className="form-group">
+                <label htmlFor="p_pet">Pet & Children Friendly?</label>
+                <select name="p_pet" id="p_pet" onChange={this.onChangeFriendly} value={currentProduct.p_pet ? "true" : "false"}>
+                  <option value="true">Friendly</option>
+                  <option value="false">NOT Friendly</option>
+                </select>
               </div>
               <div className="form-group">
                   <label htmlFor="name">Image Name</label>
