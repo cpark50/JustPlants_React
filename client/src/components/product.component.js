@@ -12,6 +12,8 @@ export default class Product extends Component {
     this.onChangeWater = this.onChangeWater.bind(this);
     this.onChangeLight = this.onChangeLight.bind(this);
     this.onChangeSize = this.onChangeSize.bind(this);
+    this.onChangeFriendly = this.onChangeFriendly.bind(this);
+    this.onChangeImagename = this.onChangeImagename.bind(this);
     this.getProduct = this.getProduct.bind(this);
     this.updateProduct = this.updateProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
@@ -27,7 +29,7 @@ export default class Product extends Component {
         p_desc2: "",
         p_water: "",
         p_light: "",
-        p_pet: false,
+        p_pet: null,
         imagename:""
         // published: false
       },
@@ -128,6 +130,32 @@ export default class Product extends Component {
         currentProduct: {
           ...prevState.currentProduct,
           p_light: light
+        }
+      };
+    });
+  }
+
+  onChangeFriendly(e) {
+    const pet = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          p_pet: pet
+        }
+      };
+    });
+  }
+
+  onChangeImagename(e) {
+    const iname = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          imagename: iname
         }
       };
     });
@@ -235,7 +263,7 @@ export default class Product extends Component {
                   className="form-control"
                   id="othername"
                   value={currentProduct.p_othername}
-                  onChange={this.onChangeName}
+                  onChange={this.onChangeOthername}
                 />
               </div>
               <div className="form-group">
@@ -300,22 +328,31 @@ export default class Product extends Component {
                 />
               </div>
               <div className="form-group">
-              <label htmlFor="p_pet">Pet & Children Friendly?</label>
-              <input
-                type="radio"
-                className="form-control"
-                id="p_pet"
-                required
-                value={currentProduct.p_pet}
-                onChange={this.onChangeFriendly}
-                name="p_pet"
-              />
-            </div>
+                <label htmlFor="p_pet">Pet & Children Friendly?</label>
+                <input
+                  type="radio"
+                  className="form-control"
+                  id="p_pet"
+                  required
+                  value={currentProduct.p_pet}
+                  onChange={this.onChangeFriendly}
+                  name="p_pet"
+                />
+              </div>
+              <div className="form-group">
+                  <label htmlFor="name">Image Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="imagename"
+                    value={currentProduct.imagename}
+                    onChange={this.onChangeImagename}
+                  />
+              </div>
             </form>
             <button
               className="badge badge-danger mr-2"
-              onClick={this.deleteProduct}
-            >
+              onClick={this.deleteProduct}>
               Delete
             </button>
 

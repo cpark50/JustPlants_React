@@ -161,6 +161,12 @@ export default class ProductsList extends Component {
               </div>
               <div>
                 <label>
+                  <strong>Biological Name:</strong>
+                </label>{" "}
+                {currentProduct.p_othername}
+              </div>
+              <div>
+                <label>
                   <strong>Price:</strong>
                 </label>{" "}
                 {currentProduct.p_price}
