@@ -5,11 +5,16 @@ export default class Product extends Component {
   constructor(props) {
     super(props);
     this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeOthername = this.onChangeOthername.bind(this);
     this.onChangeDescription = this.onChangeDescription.bind(this);
     this.onChangeDescription2 = this.onChangeDescription2.bind(this);
     this.onChangePrice = this.onChangePrice.bind(this);
+    this.onChangeWater = this.onChangeWater.bind(this);
+    this.onChangeLight = this.onChangeLight.bind(this);
+    this.onChangeSize = this.onChangeSize.bind(this);
+    this.onChangeFriendly = this.onChangeFriendly.bind(this);
+    this.onChangeImagename = this.onChangeImagename.bind(this);
     this.getProduct = this.getProduct.bind(this);
-    // this.updatePublished = this.updatePublished.bind(this);
     this.updateProduct = this.updateProduct.bind(this);
     this.deleteProduct = this.deleteProduct.bind(this);
 
@@ -17,13 +22,14 @@ export default class Product extends Component {
       currentProduct: {
         id: null,
         p_name: "",
+        p_othername: "",
         p_price: null,
         p_size: "",
         p_desc: "",
         p_desc2: "",
         p_water: "",
         p_light: "",
-        p_pet: false,
+        p_pet: null,
         imagename:""
         // published: false
       },
@@ -81,6 +87,80 @@ export default class Product extends Component {
     }));
   }
 
+  onChangeOthername(e) {
+    const othername = e.target.value;
+    
+    this.setState(prevState => ({
+      currentProduct: {
+        ...prevState.currentProduct,
+        p_othername: othername
+      }
+    }));
+  }
+
+  onChangeSize(e) {
+    const size = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          p_size: size
+        }
+      };
+    });
+  }
+
+  onChangeWater(e) {
+    const water = e.target.value;
+    
+    this.setState(prevState => ({
+      currentProduct: {
+        ...prevState.currentProduct,
+        p_water: water
+      }
+    }));
+  }
+
+  onChangeLight(e) {
+    const light = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          p_light: light
+        }
+      };
+    });
+  }
+
+  onChangeFriendly(e) {
+    const pet = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          p_pet: pet
+        }
+      };
+    });
+  }
+
+  onChangeImagename(e) {
+    const iname = e.target.value;
+
+    this.setState(function(prevState) {
+      return {
+        currentProduct: {
+          ...prevState.currentProduct,
+          imagename: iname
+        }
+      };
+    });
+  }
+
   getProduct(id) {
     ProductDataService.get(id)
       .then(response => {
@@ -105,6 +185,7 @@ export default class Product extends Component {
       var data = {
         id: this.state.currentProduct.id,
         p_name: this.state.currentProduct.p_name,
+        p_othername: this.state.currentProduct.p_othername,
         p_price: price,
         p_desc: this.state.currentProduct.p_desc,
         p_desc2: this.state.currentProduct.p_desc2,
@@ -170,9 +251,19 @@ export default class Product extends Component {
                 <input
                   type="text"
                   className="form-control"
-                  id="title"
+                  id="name"
                   value={currentProduct.p_name}
                   onChange={this.onChangeName}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="name">Biological Name</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="othername"
+                  value={currentProduct.p_othername}
+                  onChange={this.onChangeOthername}
                 />
               </div>
               <div className="form-group">
@@ -187,7 +278,17 @@ export default class Product extends Component {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="description">Description</label>
+                <label htmlFor="size">Size (width * height * diameter in cm)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="size"
+                  value={currentProduct.p_size}
+                  onChange={this.onChangeSize}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="description">Description (255 char limit)</label>
                 <input
                   type="text"
                   className="form-control"
@@ -195,35 +296,70 @@ export default class Product extends Component {
                   value={currentProduct.p_desc}
                   onChange={this.onChangeDescription}
                 />
-              </div>          
+              </div>
               <div className="form-group">
-                <label>
-                  <strong>Pet & Child Friendliness: </strong>
-                </label>
-                {currentProduct.p_pet ? " Friendly" : " Not Friendly"}
+                <label htmlFor="description2">Description 2 (255 char limit)</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="description2"
+                  value={currentProduct.p_desc2}
+                  onChange={this.onChangeDescription2}
+                />
+              </div>         
+              <div className="form-group">
+                <label htmlFor="water">Care Instructions: Water </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="water"
+                  value={currentProduct.p_water}
+                  onChange={this.onChangeWater}
+                />
+              </div> 
+              <div className="form-group">
+                <label htmlFor="light">Care Instructions: Light </label>
+                <input
+                  type="text"
+                  className="form-control"
+                  id="light"
+                  value={currentProduct.p_light}
+                  onChange={this.onChangeLight}
+                />
+              </div>
+              {/* <div className="form-group">
+                <label htmlFor="p_pet">Pet & Children Friendly?</label>
+                <input
+                  type="radio"
+                  className="form-control"
+                  id="p_pet"
+                  required
+                  value={currentProduct.p_pet}
+                  onChange={this.onChangeFriendly}
+                  name="p_pet"
+                />
+              </div> */}
+              <div className="form-group">
+                <label htmlFor="p_pet">Pet & Children Friendly?</label>
+                <select name="p_pet" id="p_pet" onChange={this.onChangeFriendly} value={currentProduct.p_pet ? "true" : "false"}>
+                  <option value="true">Friendly</option>
+                  <option value="false">NOT Friendly</option>
+                </select>
+              </div>
+              <div className="form-group">
+                  <label htmlFor="name">Image Name</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="imagename"
+                    value={currentProduct.imagename}
+                    onChange={this.onChangeImagename}
+                  />
               </div>
             </form>
-
-            {/* {currentProduct.published ? (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(false)}
-              >
-                UnPublish
-              </button>
-            ) : (
-              <button
-                className="badge badge-primary mr-2"
-                onClick={() => this.updatePublished(true)}
-              >
-                Publish
-              </button>
-            )} */}
-
             <button
               className="badge badge-danger mr-2"
-              onClick={this.deleteProduct}
-            >
+              onClick={this.deleteProduct}>
               Delete
             </button>
 
