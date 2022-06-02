@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import ProductDataService from "../services/product.service";
+import UploadImages from "./upload-files.component";
 
 export default class AddProduct extends Component {
   constructor(props) {
@@ -303,14 +304,17 @@ export default class AddProduct extends Component {
               />
             </div>
             {/* Find way to upload image & save the imagename into the db */}
-            <div className="form-group">
-              <label htmlFor="image">Product Image</label>
+            <div className="container">
+              <div className="content">
+                <UploadImages/>
+              {/* <label htmlFor="image">Product Image</label>
               <input
                 type="file"
                 className="form-control"
                 onChange={this.uploadPicture}
                 name="image"
-              />
+              /> */}
+              </div>
             </div>
             <div className="form-group">
               <label htmlFor="imagename">Image name</label>

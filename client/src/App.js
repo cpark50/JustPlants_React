@@ -11,7 +11,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div class="title">
+        <div className="title">
           <h1>JustPlants Admin Page</h1>
         </div>
         <nav className="navbar navbar-expand navbar-light bg-light">

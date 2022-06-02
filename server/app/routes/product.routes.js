@@ -1,6 +1,7 @@
 module.exports = app => {
   const products = require("../controllers/product.controller.js");
-
+  const images = require("../controllers/file.controller");
+  
   var router = require("express").Router();
 
   // Create a new Tutorial
@@ -25,6 +26,13 @@ module.exports = app => {
   // Delete all Tutorials
   router.delete("/", products.deleteAll);
 
+  router.post("/upload", images.upload);
+
+  router.get("/files", images.getListFiles);
+
+  router.get("/files/:name", images.download);
+
+  app.use('/files', router);
   // 
   app.use('/api/products', router);
 };
