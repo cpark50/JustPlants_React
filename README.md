@@ -24,8 +24,5 @@ When the admin clicks "Add" from the navigation bar, the website directs to a pa
 When viewing the product from the mainpage, user can click "edit" and it will direct to a page where the user can update product information. The last part of the url is the id number of the product. The editing product information page also allows user to delete the product. It works similar to adding new product but instead of creating a new one, it updates information on top of the existing content. 
 
 
-
-
-
-
-
+**Two Filters**  (http://localhost:8081/products?query) \
+There are two filters that user can use in the main page to filter the results shown on the main page. The first filter asks the user to input a number, which is the max price; by clicking the filter by price, only products below that price will be shown. The second filter is based on whether the product is friendly to pet and children.
