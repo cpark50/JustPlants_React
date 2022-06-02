@@ -48,8 +48,11 @@ exports.findAll = (req, res) => {
   const p_name = req.query.name;
   const filterPrice = req.query.price;
   const friendliness = req.query.friendliness;
-  var condition = p_name ? {p_name : { [Op.like]: `%${p_name}%` } }: null;
-  condition = filterPrice ? {p_price : { [Op.between] : [0, filterPrice] } }: null;
+  var condition;
+  if(p_name)
+    condition = {p_name : { [Op.like]: `%${p_name}%` } };
+  if(filterPrice)
+    condition = {p_price : { [Op.between] : [0, filterPrice] } };
   if(friendliness){
     if(friendliness=="friendly")
       condition = {p_pet: { [Op.eq]: 1 }};
