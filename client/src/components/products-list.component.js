@@ -215,17 +215,16 @@ export default class ProductsList extends Component {
               />
               <label for="notfriendly">Not Pet and Children Friendly</label>
             </div>
-
+            
             <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={this.filterFriendliness}
-            >
-              Apply Friendliness Filter
-            </button>        
-          </div>
+            className="btn btn-outline-secondary"
+            type="button"
+            onClick={this.filterFriendliness}>
+            Apply Friendliness Filter
+            </button> 
         </div>
       </div>
+    </div>
       
 
       <div className="row">

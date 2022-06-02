@@ -52,3 +52,8 @@ h4 {
   text-align: left;
   padding-top: 10px;
 }
+
+.radiogroup {
+  width: 69%;
+  margin: auto;
+}
