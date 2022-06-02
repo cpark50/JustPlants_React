@@ -30,6 +30,9 @@ exports.create = (req, res) => {
   // Save Product in the database
   Product.create(product)
     .then(data => {
+      // fs.writeFileSync(
+      //   __basedir + "/Users/crystalalice/Desktop/IN4MATX124/JustPlants/justplants/src/main/webapp/images" + image.name
+      //   );
       res.send(data);
     })
     .catch(err => {
