@@ -109,6 +109,11 @@ export default class ProductsList extends Component {
       .catch(e => {
         console.log(e);
       });
+
+    this.setState({
+      filterPrice: "",
+      filterFriendliness: null
+    });
   }
 
   filterPrice() {
@@ -127,6 +132,11 @@ export default class ProductsList extends Component {
       .catch(e => {
         console.log(e);
       });
+
+    this.setState({
+      searchName: "",
+      filterFriendliness: null
+    });
   }
 
   filterFriendliness() {
@@ -145,6 +155,11 @@ export default class ProductsList extends Component {
       .catch(e => {
         console.log(e);
       });
+
+    this.setState({
+      searchName: "",
+      filterPrice: "null"
+    });
   }
 
   render() {
@@ -178,6 +193,7 @@ export default class ProductsList extends Component {
           <div className="input-group">
             <input 
               type="number"
+              step="5"
               className="form-control"
               placeholder="Filter by price"
               value={filterPrice}
@@ -188,7 +204,7 @@ export default class ProductsList extends Component {
               type="button"
               onClick={this.filterPrice}
             >
-              Apply Price Filter
+              Set as Maximum Price
             </button>        
           </div>
         </div>
