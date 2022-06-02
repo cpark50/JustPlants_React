@@ -25,8 +25,18 @@ class ProductDataService {
     return http.delete(`/products`);
   }
 
-  findByTitle(title) {
-    return http.get(`/products?title=${title}`);
+  findByName(name) {
+    return http.get(`/products?name=${name}`);
+  }
+
+  filterByPrice(price){
+    // console.log(price);
+    return http.get(`/products?price=${price}`);
+  }
+
+  filterByFriendly(friendliness){
+    console.log(friendliness)
+    return http.get(`/products?friendliness=${friendliness}`)
   }
 }
 

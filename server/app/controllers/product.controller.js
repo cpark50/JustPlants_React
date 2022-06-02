@@ -43,9 +43,17 @@ exports.create = (req, res) => {
 // Retrieve all Products from the database.
 exports.findAll = (req, res) => {
   const p_name = req.query.name;
-  var condition = p_name ? { p_name: { [Op.like]: `%${p_name}%` } } : null;
-
-  Product.findAll({ where: condition })
+  const filterPrice = req.query.price;
+  const friendliness = req.query.friendliness;
+  var condition = p_name ? {p_name : { [Op.like]: `%${p_name}%` } }: null;
+  condition = filterPrice ? {p_price : { [Op.between] : [0, filterPrice] } }: null;
+  if(friendliness){
+    if(friendliness=="friendly")
+      condition = {p_pet: { [Op.eq]: 1 }};
+    else
+      condition = {p_pet: { [Op.eq]: 0 }};
+  }
+  Product.findAll({where : condition})
     .then(data => {
       res.send(data);
     })
